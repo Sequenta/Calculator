@@ -1,5 +1,5 @@
-﻿using BusinessLogic;
-using Domain;
+﻿using Domain;
+using Moq;
 using Xunit;
 
 namespace CalculatorSolution.Test.Logic
@@ -9,8 +9,9 @@ namespace CalculatorSolution.Test.Logic
         [Fact]
         public void Reader_ReturnsCorrectExpression()
         {
-            IExpressionInputReader reader = new ConsoleInputReader();
-            var result = reader.GetExpression();
+            var moqReader = new Mock<IExpressionInputReader>();
+            moqReader.Setup(moq => moq.GetExpression()).Returns("2+3*5");
+            var result = moqReader.Object.GetExpression();
             Assert.Equal("2+3*5",result);
         }
     }
