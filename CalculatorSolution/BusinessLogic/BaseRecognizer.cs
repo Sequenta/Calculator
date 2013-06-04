@@ -39,7 +39,17 @@ namespace BusinessLogic
 
         public string GetFullOperation(string expression)
         {
-            throw new System.NotImplementedException();
+            foreach (var operation in operations)
+            {
+                var operatorLength = operation.StringPresentation.Length;
+                var operationSubstring = expression.Substring(0, operatorLength);
+                if (operationSubstring == operation.StringPresentation)
+                {
+                    var recognizedOperation = operationSubstring;
+                    return recognizedOperation;
+                }
+            }
+            return "";
         }
     }
 }
