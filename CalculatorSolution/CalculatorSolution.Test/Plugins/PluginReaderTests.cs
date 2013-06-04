@@ -10,7 +10,7 @@ namespace CalculatorSolution.Test.Plugins
         public void PluginReader_FindsAllDLLFiles()
         {
             IPluginReader pluginReader = new OperationPluginReader();
-            var pluginPath = System.Environment.CurrentDirectory;
+            var pluginPath = System.Environment.CurrentDirectory + "\\" + "Plugins";
 
             var result = pluginReader.ReadPluginsFrom(pluginPath);
 
