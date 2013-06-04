@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Logic\InputReaderTests.cs" />
     <Compile Include="Logic\RecognizerTests.cs" />
-    <Compile Include="Plugins\PluginReaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,11 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
-      <Project>{b0d75e97-7598-4922-bf69-cf2a069dd147}</Project>
+      <Project>{B0D75E97-7598-4922-BF69-CF2A069DD147}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{e2c6823f-8f5f-441c-bf24-e2de458c60d1}</Project>
+      <Project>{E2C6823F-8F5F-441C-BF24-E2DE458C60D1}</Project>
       <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
