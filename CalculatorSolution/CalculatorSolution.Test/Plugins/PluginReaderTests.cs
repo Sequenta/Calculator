@@ -27,6 +27,18 @@ namespace CalculatorSolution.Test.Plugins
             Assert.Throws<DirectoryNotFoundException>(() => pluginReader.ReadPluginsFrom(pluginPath));
         }
 
+        [Fact]
+        public void PluginReader_ReturnsValidOperation()
+        {
+            var moqOperation = new Mock<IOperation>();
+            moqOperation.Setup(operation => operation.StringPresentation).Returns("+");
+            IPluginReader pluginReader = new OperationPluginReader();
+            var pluginPath = System.Environment.CurrentDirectory + "\\" + "Plugins";
+
+            var operations = pluginReader.ReadPluginsFrom(pluginPath);
+
+            Assert.Equal(moqOperation.Object.StringPresentation, operations[0].StringPresentation);
+        }
        
     }
 }
