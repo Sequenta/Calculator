@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Domain;
 
@@ -24,14 +25,10 @@ namespace BusinessLogic
         private void GetOperationsFromAssembly(Assembly assembly, List<IOperation> operations)
         {
             var types = assembly.GetTypes();
-            foreach (var type in types)
-            {
-                if (typeof (IOperation).IsAssignableFrom(type))
-                {
-                    var operation = (IOperation) Activator.CreateInstance(type);
-                    operations.Add(operation);
-                }
-            }
+            operations.AddRange(from type 
+                                in types 
+                                where typeof (IOperation).IsAssignableFrom(type) 
+                                select (IOperation) Activator.CreateInstance(type));
         }
 
         private IEnumerable<FileInfo> GetPluginFiles(string path)
