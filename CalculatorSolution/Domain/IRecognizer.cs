@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System.Collections.Generic;
+
+namespace Domain
 {
     /// <summary>
     /// Интерфейс распознавателя выражений
@@ -18,5 +20,12 @@
         /// <param name="expression">строка выражения</param>
         /// <returns></returns>
         string GetFullOperation(string expression);
+
+        /// <summary>
+        /// Возвращает список распознанных операндов
+        /// </summary>
+        /// <param name="expression">строка выражения</param>
+        /// <returns></returns>
+        List<string> Recognize(string expression);
     }
 }
