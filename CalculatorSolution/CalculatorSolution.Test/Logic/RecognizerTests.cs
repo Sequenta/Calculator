@@ -58,7 +58,7 @@ namespace CalculatorSolution.Test.Logic
             var operationsList = new List<IOperation> {moqFirstOperation.Object, moqSecondOperation.Object};
             IRecognizer recognizer = new BaseRecognizer(operationsList);
 
-            var result = recognizer.Recognize("2+6*8");
+            var result = recognizer.Recognize("2+6-8");
 
             Assert.Equal(5,result.Count);
         }
