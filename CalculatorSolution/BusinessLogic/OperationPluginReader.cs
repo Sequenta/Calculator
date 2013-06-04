@@ -16,17 +16,22 @@ namespace BusinessLogic
             foreach (var fileInfo in plugins)
             {
                 var assembly = Assembly.LoadFrom(fileInfo.FullName);
-                var types = assembly.GetTypes();
-                foreach (var type in types)
-                {
-                    if (typeof(IOperation).IsAssignableFrom(type))
-                    {
-                        var operation = (IOperation)Activator.CreateInstance(type);
-                        operations.Add(operation);
-                    }
-                }
+                GetOperationsFromAssembly(assembly, operations);
             }
             return operations;
+        }
+
+        private void GetOperationsFromAssembly(Assembly assembly, List<IOperation> operations)
+        {
+            var types = assembly.GetTypes();
+            foreach (var type in types)
+            {
+                if (typeof (IOperation).IsAssignableFrom(type))
+                {
+                    var operation = (IOperation) Activator.CreateInstance(type);
+                    operations.Add(operation);
+                }
+            }
         }
 
         private IEnumerable<FileInfo> GetPluginFiles(string path)
