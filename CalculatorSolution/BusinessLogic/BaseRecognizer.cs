@@ -13,7 +13,7 @@ namespace BusinessLogic
             var recognizedNumber = new StringBuilder();
             foreach (var character in expression)
             {
-                if (char.IsDigit(character))
+                if (char.IsDigit(character) || character == '.' || character == ',')
                 {
                     recognizedNumber.Append(character);
                 }
