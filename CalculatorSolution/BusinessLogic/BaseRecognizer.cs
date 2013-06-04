@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 using Domain;
 
 namespace BusinessLogic
@@ -8,6 +9,17 @@ namespace BusinessLogic
     /// </summary>
     public class BaseRecognizer:IRecognizer
     {
+        private List<IOperation> operations;
+
+        public BaseRecognizer() : this(null)
+        {
+        }
+
+        public BaseRecognizer(List<IOperation> operationsList)
+        {
+            operations = operationsList;
+        }
+
         public string GetFullNumber(string expression)
         {
             var recognizedNumber = new StringBuilder();
@@ -23,6 +35,11 @@ namespace BusinessLogic
                 }
             }
             return recognizedNumber.ToString();
+        }
+
+        public string GetFullOperation(string expression)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
