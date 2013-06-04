@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRecognizer.cs" />
     <Compile Include="ConsoleInputReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
