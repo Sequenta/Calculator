@@ -36,5 +36,16 @@ namespace CalculatorSolution.Test.Logic
 
             Assert.Equal("+",result);
         }
+
+        [Fact]
+        public void GetFullOperation_ThrowsUnrecognizedOperationException()
+        {
+            var moqOperation = new Mock<IOperation>();
+            moqOperation.Setup(operation => operation.StringPresentation).Returns("+");
+            var operationsList = new List<IOperation> {moqOperation.Object};
+            IRecognizer recognizer = new BaseRecognizer(operationsList);
+
+            Assert.Throws<UnrecognizedOperationException>(() => recognizer.GetFullOperation("-23"));
+        }
     }
 }
