@@ -49,7 +49,7 @@ namespace BusinessLogic
                     return recognizedOperation;
                 }
             }
-            return "";
+            throw new UnrecognizedOperationException();
         }
     }
 }
