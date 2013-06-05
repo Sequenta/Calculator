@@ -46,6 +46,7 @@ namespace BusinessLogic
                 if (IsNumber(operand))
                 {
                     helperStack.Push(operand);
+
                 }
                 else
                 {

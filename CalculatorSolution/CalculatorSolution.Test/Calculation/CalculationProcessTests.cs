@@ -1,4 +1,5 @@
-﻿using BusinessLogic;
+﻿using System;
+using BusinessLogic;
 using Xunit;
 
 namespace CalculatorSolution.Test.Calculation
@@ -42,6 +43,17 @@ namespace CalculatorSolution.Test.Calculation
             var result = calculator.Calculate("2+6*10-2");
 
             Assert.Equal(60, result);
+        }
+
+        [Fact]
+        public void Calculator_ThrowsInvalidOperationException()
+        {
+            var pluginReader = new OperationPluginReader();
+            var operationsList = pluginReader.ReadPluginsFrom(Environment.CurrentDirectory + "\\Plugins");
+            var recognizer = new BaseRecognizer(operationsList);
+            var calculator = new PostfixCalculator(recognizer);
+
+            Assert.Throws<InvalidOperationException>(() => calculator.Calculate("2//2"));
         }
 
         [Fact]
