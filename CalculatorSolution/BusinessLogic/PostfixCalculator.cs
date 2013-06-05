@@ -25,6 +25,39 @@ namespace BusinessLogic
             return result;
         }
 
+        private double PerformCalculations(Queue<string> operandsQueue)
+        {
+            double result = 0;
+            var helperStack = new Stack<string>();
+            while (operandsQueue.Count != 0)
+            {
+                var operand = operandsQueue.Dequeue();
+                if (IsNumber(operand))
+                {
+                    helperStack.Push(operand);
+                }
+                else
+                {
+                    result = PerformOperation(operand, helperStack);
+                }
+            }
+            return result;
+        }
+
+        private double PerformOperation(string operand, Stack<string> helperStack)
+        {
+            var currentOperation = recognizer.GetOperation(operand);
+            var numberOfArguments = currentOperation.Arity;
+            var arguments = new double[numberOfArguments];
+            for (var i = 0; i < numberOfArguments; i++)
+            {
+                arguments[i] = double.Parse(helperStack.Pop(), numberFormatInfo);
+            }
+            var result = currentOperation.Perform(arguments);
+            helperStack.Push(result.ToString());
+            return result;
+        }
+
         /// <summary>
         /// Оперделяет, является ли входная строка числом
         /// </summary>
