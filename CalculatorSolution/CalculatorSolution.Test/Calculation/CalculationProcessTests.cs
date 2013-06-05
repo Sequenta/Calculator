@@ -39,9 +39,22 @@ namespace CalculatorSolution.Test.Calculation
             var recognizer = new BaseRecognizer(operationsList);
             var calculator = new PostfixCalculator(recognizer);
 
-            var result = calculator.Calculate("1+6*10+5");
+            var result = calculator.Calculate("2+6*10-2");
 
-            Assert.Equal(66, result);
+            Assert.Equal(60, result);
+        }
+
+        [Fact]
+        public void Calculator_ReordersOperandsInCorrectOrder()
+        {
+            var pluginReader = new OperationPluginReader();
+            var operationsList = pluginReader.ReadPluginsFrom(System.Environment.CurrentDirectory + "\\Plugins");
+            var recognizer = new BaseRecognizer(operationsList);
+            var calculator = new PostfixCalculator(recognizer);
+
+            var result = calculator.ReorderInPostfixNotation(new[]{"2","+","6","*","10","-","2"});
+
+            Assert.Equal(new[]{"2","6","10","*","2","-","+"}, result);
         }
     }
 }
