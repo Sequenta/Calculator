@@ -20,6 +20,11 @@ namespace BusinessLogic
             return 234;
         }
 
+        /// <summary>
+        /// Оперделяет, является ли входная строка числом
+        /// </summary>
+        /// <param name="operand">строка операнда</param>
+        /// <returns></returns>
         public bool IsNumber(string operand)
         {
             double number;
