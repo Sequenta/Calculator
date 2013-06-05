@@ -42,6 +42,7 @@
     <Compile Include="BaseRecognizer.cs" />
     <Compile Include="ConsoleInputReader.cs" />
     <Compile Include="OperationPluginReader.cs" />
+    <Compile Include="PostfixCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnrecognizedOperationException.cs" />
   </ItemGroup>
