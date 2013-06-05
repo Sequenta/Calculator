@@ -69,10 +69,10 @@ namespace BusinessLogic
             var arguments = new double[numberOfArguments];
             for (var i = 0; i < numberOfArguments; i++)
             {
-                arguments[i] = double.Parse(helperStack.Pop(), numberFormatInfo);
+                arguments[i] = double.Parse(helperStack.Pop(),NumberStyles.AllowDecimalPoint, numberFormatInfo);
             }
             var result = currentOperation.Perform(arguments);
-            helperStack.Push(result.ToString());
+            helperStack.Push(result.ToString(numberFormatInfo));
             return result;
         }
 

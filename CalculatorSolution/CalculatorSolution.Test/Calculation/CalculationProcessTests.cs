@@ -46,6 +46,19 @@ namespace CalculatorSolution.Test.Calculation
         }
 
         [Fact]
+        public void Calculator_CalculatesExpressionWithMultipleOperationsAndFloatingPointNumbersProperly()
+        {
+            var pluginReader = new OperationPluginReader();
+            var operationsList = pluginReader.ReadPluginsFrom(System.Environment.CurrentDirectory + "\\Plugins");
+            var recognizer = new BaseRecognizer(operationsList);
+            var calculator = new PostfixCalculator(recognizer);
+
+            var result = calculator.Calculate("2.1+6.3*5.5-2.5");
+
+            Assert.Equal(34.25, result);
+        }
+
+        [Fact]
         public void Calculator_ThrowsInvalidOperationException()
         {
             var pluginReader = new OperationPluginReader();
