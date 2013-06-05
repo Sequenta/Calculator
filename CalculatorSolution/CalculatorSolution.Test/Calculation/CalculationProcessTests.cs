@@ -25,13 +25,5 @@ namespace CalculatorSolution.Test.Calculation
 
             Assert.True(result);
         }
-
-        [Fact]
-        public void Calculator_ReordersOperandsInCorrectOrder()
-        {
-            var calculator = new PostfixCalculator();
-            var result = calculator.ReorderInPostfixNotation(new List<string> { "3", "+", "7", "*", "2" });
-            Assert.Equal(new[] { "3", "7", "2", "*", "+" }, result);
-        }
     }
 }

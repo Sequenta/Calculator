@@ -37,7 +37,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="operands">массив операндов</param>
         /// <returns>очередь в постфиксной нотации</returns>
-        public Queue<string> ReorderInPostfixNotation(List<string> operands)
+        private Queue<string> ReorderInPostfixNotation(List<string> operands)
         {
             var resultQueue = new Queue<string>();
             var helperStack = new Stack<string>();
