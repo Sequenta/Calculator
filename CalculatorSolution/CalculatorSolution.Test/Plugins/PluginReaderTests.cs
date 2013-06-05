@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using BusinessLogic;
 using Domain;
-using Moq;
 using Xunit;
 
 namespace CalculatorSolution.Test.Plugins
