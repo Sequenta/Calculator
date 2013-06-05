@@ -6,7 +6,7 @@ namespace CalculatorSolution.Test.Calculation
     public class CalculationProcessTests
     {
         [Fact]
-        public void GetOperator_ReturnsCorrectOperator()
+        public void Calculator_CalculatesSimpleExpressionProperly()
         {
             var pluginReader = new OperationPluginReader();
             var operationsList = pluginReader.ReadPluginsFrom(System.Environment.CurrentDirectory + "\\Plugins");
