@@ -131,5 +131,10 @@ namespace BusinessLogic
         {
             return recognizer.GetOperationPriority(operation);
         }
+
+        public List<string> GetAvailableOperations()
+        {
+            return recognizer.GetAvailableOperations();
+        }
     }
 }
