@@ -17,5 +17,18 @@ namespace CalculatorSolution.Test.Calculation
 
             Assert.Equal(4,result);
         }
+
+        [Fact]
+        public void Calculator_CalculatesSimpleExpressionWithFloatingPoinNumbersProperly()
+        {
+            var pluginReader = new OperationPluginReader();
+            var operationsList = pluginReader.ReadPluginsFrom(System.Environment.CurrentDirectory + "\\Plugins");
+            var recognizer = new BaseRecognizer(operationsList);
+            var calculator = new PostfixCalculator(recognizer);
+
+            var result = calculator.Calculate("2.5+2.5");
+
+            Assert.Equal(5, result);
+        }
     }
 }
