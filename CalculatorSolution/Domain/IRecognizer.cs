@@ -40,5 +40,11 @@ namespace Domain
         /// </summary>
         /// <returns></returns>
         int GetOperationPriority(string operationString);
+
+        /// <summary>
+        /// Возвращает все доступные операци
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetAvailableOperations();
     }
 }
