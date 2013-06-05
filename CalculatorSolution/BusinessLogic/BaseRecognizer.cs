@@ -73,5 +73,17 @@ namespace BusinessLogic
             }
             return operands;
         }
+
+        public IOperation GetOperation(string operand)
+        {
+            foreach (var operation in operations)
+            {
+                if (operand == operation.StringPresentation)
+                {
+                    return operation;
+                }
+            }
+            throw new UnrecognizedOperationException();
+        }
     }
 }
