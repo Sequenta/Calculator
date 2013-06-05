@@ -6,7 +6,7 @@ namespace CalculatorSolution.Test.Calculation
     public class CalculationProcessTests
     {
         [Fact]
-        public void Calculator_CanRecognizeDouble()
+        public void CalculatorIsNumber_ReturnsTrueWhenDouble()
         {
             var calculator = new PostfixCalculator();
 
