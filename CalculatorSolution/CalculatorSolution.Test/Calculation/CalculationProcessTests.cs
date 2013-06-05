@@ -30,5 +30,18 @@ namespace CalculatorSolution.Test.Calculation
 
             Assert.Equal(5, result);
         }
+
+        [Fact]
+        public void Calculator_CalculatesExpressionWithMultipleOperationsProperly()
+        {
+            var pluginReader = new OperationPluginReader();
+            var operationsList = pluginReader.ReadPluginsFrom(System.Environment.CurrentDirectory + "\\Plugins");
+            var recognizer = new BaseRecognizer(operationsList);
+            var calculator = new PostfixCalculator(recognizer);
+
+            var result = calculator.Calculate("1+6*10+5");
+
+            Assert.Equal(66, result);
+        }
     }
 }
