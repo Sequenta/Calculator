@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICalculator.cs" />
     <Compile Include="IExpressionInputReader.cs" />
     <Compile Include="IOperation.cs" />
     <Compile Include="IPluginReader.cs" />

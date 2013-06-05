@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculation\CalculationProcessTests.cs" />
     <Compile Include="Logic\InputReaderTests.cs" />
     <Compile Include="Logic\RecognizerTests.cs" />
     <Compile Include="Plugins\PluginReaderTests.cs" />
