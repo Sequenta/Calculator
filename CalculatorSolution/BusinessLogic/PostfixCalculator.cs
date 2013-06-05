@@ -12,9 +12,11 @@ namespace BusinessLogic
             return 234;
         }
 
-        public bool IsNumber(string s)
+        public bool IsNumber(string operand)
         {
-            return true;
+            double number;
+            var isNumber = double.TryParse(operand, out number);
+            return isNumber;
         }
     }
 }
