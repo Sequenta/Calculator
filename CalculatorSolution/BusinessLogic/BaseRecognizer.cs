@@ -89,5 +89,10 @@ namespace BusinessLogic
             var operation = GetOperation(operationString);
             return operation.Priority;
         }
+
+        public List<string> GetAvailableOperations()
+        {
+            return operations.Select(operation => operation.StringPresentation).ToList();
+        }
     }
 }
