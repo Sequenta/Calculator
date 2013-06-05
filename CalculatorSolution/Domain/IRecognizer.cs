@@ -27,5 +27,12 @@ namespace Domain
         /// <param name="expression">строка выражения</param>
         /// <returns></returns>
         List<string> Recognize(string expression);
+
+        /// <summary>
+        /// По строковому представлению операции возвращает соответсвтующий экземпляр IOperation
+        /// </summary>
+        /// <param name="operand">строковое представление операции</param>
+        /// <returns></returns>
+        IOperation GetOperation(string operand);
     }
 }
