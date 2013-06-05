@@ -17,6 +17,12 @@ namespace BusinessLogic
             numberFormatInfo = new NumberFormatInfo {NumberDecimalSeparator = "."};
             this.recognizer = recognizer;
         }
+
+        /// <summary>
+        /// Расчитывает выражение и выдает результат
+        /// </summary>
+        /// <param name="expression">строка выражения</param>
+        /// <returns></returns>
         public double Calculate(string expression)
         {
             var operands = recognizer.Recognize(expression);
@@ -25,6 +31,11 @@ namespace BusinessLogic
             return result;
         }
 
+        /// <summary>
+        /// Выполняет соответсвующие действия над операндами, в зависимости от их типа
+        /// </summary>
+        /// <param name="operandsQueue">очередь операндов, сформированная в постфиксной нотации</param>
+        /// <returns></returns>
         private double PerformCalculations(Queue<string> operandsQueue)
         {
             double result = 0;
@@ -44,6 +55,12 @@ namespace BusinessLogic
             return result;
         }
 
+        /// <summary>
+        /// Выполняет конкретную операцию над соответсвующим количеством операндов
+        /// </summary>
+        /// <param name="operand">строковое представление операции</param>
+        /// <param name="helperStack">вспомогательный стек операндов</param>
+        /// <returns></returns>
         private double PerformOperation(string operand, Stack<string> helperStack)
         {
             var currentOperation = recognizer.GetOperation(operand);
