@@ -83,5 +83,11 @@ namespace BusinessLogic
             }
             throw new UnrecognizedOperationException();
         }
+
+        public int GetOperationPriority(string operationString)
+        {
+            var operation = GetOperation(operationString);
+            return operation.Priority;
+        }
     }
 }
