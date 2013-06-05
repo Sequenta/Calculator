@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-﻿
-=======
 ﻿using System.IO;
 using BusinessLogic;
 using Domain;
@@ -31,4 +28,3 @@ namespace CalculatorSolution.Test.Plugins
         }
     }
 }
->>>>>>> refs/remotes/origin/pluginLoader

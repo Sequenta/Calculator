@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="IExpressionInputReader.cs" />
     <Compile Include="IOperation.cs" />
+    <Compile Include="IPluginReader.cs" />
     <Compile Include="IRecognizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

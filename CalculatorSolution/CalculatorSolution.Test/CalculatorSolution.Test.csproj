@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Logic\InputReaderTests.cs" />
     <Compile Include="Logic\RecognizerTests.cs" />
+    <Compile Include="Plugins\PluginReaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
