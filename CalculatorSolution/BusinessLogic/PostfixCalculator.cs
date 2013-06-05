@@ -92,7 +92,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="operands">массив операндов</param>
         /// <returns>очередь в постфиксной нотации</returns>
-        private Queue<string> ReorderInPostfixNotation(IEnumerable<string> operands)
+        public Queue<string> ReorderInPostfixNotation(IEnumerable<string> operands)
         {
             var resultQueue = new Queue<string>();
             var helperStack = new Stack<string>();
@@ -104,7 +104,19 @@ namespace BusinessLogic
                 }
                 else
                 {
-                    helperStack.Push(operand);
+                    if (helperStack.Count > 0)
+                    {
+                        if (GetPriority(operand) <= GetPriority(helperStack.Peek()))
+                            helperStack.Push(operand);
+                        else
+                        {
+                            while (helperStack.Count > 0 && GetPriority(operand) > GetPriority(helperStack.Peek()))
+                                resultQueue.Enqueue((helperStack.Pop()));
+                            helperStack.Push(operand);
+                        }
+                    }
+                    else
+                        helperStack.Push(operand);
                 }
             }
             foreach (var operand in helperStack)
@@ -112,6 +124,11 @@ namespace BusinessLogic
                 resultQueue.Enqueue(operand);
             }
             return resultQueue;
+        }
+
+        private int GetPriority(string operation)
+        {
+            return recognizer.GetOperationPriority(operation);
         }
     }
 }
