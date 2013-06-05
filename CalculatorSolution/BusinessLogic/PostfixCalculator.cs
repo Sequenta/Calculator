@@ -10,14 +10,19 @@ namespace BusinessLogic
     public class PostfixCalculator:ICalculator
     {
         private NumberFormatInfo numberFormatInfo;
+        private IRecognizer recognizer;
 
-        public PostfixCalculator()
+        public PostfixCalculator(IRecognizer recognizer)
         {
             numberFormatInfo = new NumberFormatInfo {NumberDecimalSeparator = "."};
+            this.recognizer = recognizer;
         }
         public double Calculate(string expression)
         {
-            return 234;
+            var operands = recognizer.Recognize(expression);
+            var operandsQueue = ReorderInPostfixNotation(operands);
+            var result = PerformCalculations(operandsQueue);
+            return result;
         }
 
         /// <summary>
