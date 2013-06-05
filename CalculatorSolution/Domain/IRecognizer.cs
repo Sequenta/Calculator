@@ -34,5 +34,11 @@ namespace Domain
         /// <param name="operand">строковое представление операции</param>
         /// <returns></returns>
         IOperation GetOperation(string operand);
+
+        /// <summary>
+        /// Возвращает приоритет указанной операции
+        /// </summary>
+        /// <returns></returns>
+        int GetOperationPriority(string operationString);
     }
 }
