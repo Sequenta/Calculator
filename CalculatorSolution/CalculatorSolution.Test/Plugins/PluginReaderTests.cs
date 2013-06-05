@@ -8,14 +8,14 @@ namespace CalculatorSolution.Test.Plugins
     public class PluginReaderTests
     {
         [Fact]
-        public void PluginReader_FindsAllDLLFiles()
+        public void PluginReader_FindsAllOperationsInDLLFiles()
         {
             IPluginReader pluginReader = new OperationPluginReader();
             var pluginPath = System.Environment.CurrentDirectory + "\\" + "Plugins";
 
             var result = pluginReader.ReadPluginsFrom(pluginPath);
 
-            Assert.Equal(1,result.Count);
+            Assert.Equal(4,result.Count);
         }
 
         [Fact]
