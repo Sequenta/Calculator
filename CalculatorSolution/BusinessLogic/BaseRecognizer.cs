@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Domain;
@@ -43,7 +44,15 @@ namespace BusinessLogic
             foreach (var operation in operations)
             {
                 var operatorLength = operation.StringPresentation.Length;
-                var operationSubstring = expression.Substring(0, operatorLength);
+                var operationSubstring = "";
+                try
+                {
+                    operationSubstring = expression.Substring(0, operatorLength);
+                }
+                catch (Exception e)
+                {
+                    continue;
+                }
                 if (operationSubstring == operation.StringPresentation)
                 {
                     var recognizedOperation = operationSubstring;
