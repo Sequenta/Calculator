@@ -29,8 +29,6 @@ namespace CalculatorSolution.Test.Plugins
             var pluginPath = System.Environment.CurrentDirectory + "\\" + "Pluguns";
             Assert.Throws<DirectoryNotFoundException>(() => pluginReader.ReadPluginsFrom(pluginPath));
         }
-
-       
     }
 }
 >>>>>>> refs/remotes/origin/pluginLoader
