@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Domain;
 
@@ -76,12 +77,9 @@ namespace BusinessLogic
 
         public IOperation GetOperation(string operand)
         {
-            foreach (var operation in operations)
+            foreach (var operation in operations.Where(operation => operand == operation.StringPresentation))
             {
-                if (operand == operation.StringPresentation)
-                {
-                    return operation;
-                }
+                return operation;
             }
             throw new UnrecognizedOperationException();
         }
