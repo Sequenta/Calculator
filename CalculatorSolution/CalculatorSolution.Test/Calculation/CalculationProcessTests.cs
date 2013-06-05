@@ -14,5 +14,15 @@ namespace CalculatorSolution.Test.Calculation
 
             Assert.True(result);
         }
+
+        [Fact]
+        public void CalculatorIsNumber_ReturnsTrueWhenFloatingPointDouble()
+        {
+            var calculator = new PostfixCalculator();
+
+            var result = calculator.IsNumber("23.86");
+
+            Assert.True(result);
+        }
     }
 }

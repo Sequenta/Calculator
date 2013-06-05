@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System.Globalization;
+using Domain;
 
 namespace BusinessLogic
 {
@@ -7,6 +8,12 @@ namespace BusinessLogic
     /// </summary>
     public class PostfixCalculator:ICalculator
     {
+        private NumberFormatInfo numberFormatInfo;
+
+        public PostfixCalculator()
+        {
+            numberFormatInfo = new NumberFormatInfo {NumberDecimalSeparator = "."};
+        }
         public double Calculate(string expression)
         {
             return 234;
@@ -15,7 +22,7 @@ namespace BusinessLogic
         public bool IsNumber(string operand)
         {
             double number;
-            var isNumber = double.TryParse(operand, out number);
+            var isNumber = double.TryParse(operand,NumberStyles.AllowDecimalPoint,numberFormatInfo, out number);
             return isNumber;
         }
     }
