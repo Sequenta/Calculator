@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using Domain;
 
 namespace BusinessLogic
@@ -24,6 +25,33 @@ namespace BusinessLogic
             double number;
             var isNumber = double.TryParse(operand,NumberStyles.AllowDecimalPoint,numberFormatInfo, out number);
             return isNumber;
+        }
+
+        /// <summary>
+        /// Строит из операндов очередь в соответствии с постфиксной нотацией
+        /// </summary>
+        /// <param name="operands">массив операндов</param>
+        /// <returns>очередь в постфиксной нотации</returns>
+        public Queue<string> ReorderInPostfixNotation(List<string> operands)
+        {
+            var resultQueue = new Queue<string>();
+            var helperStack = new Stack<string>();
+            foreach (var operand in operands)
+            {
+                if (IsNumber(operand))
+                {
+                    resultQueue.Enqueue(operand);
+                }
+                else
+                {
+                    helperStack.Push(operand);
+                }
+            }
+            foreach (var operand in helperStack)
+            {
+                resultQueue.Enqueue(operand);
+            }
+            return resultQueue;
         }
     }
 }
