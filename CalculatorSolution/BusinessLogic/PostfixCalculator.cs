@@ -25,7 +25,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="operand">строка операнда</param>
         /// <returns></returns>
-        public bool IsNumber(string operand)
+        private bool IsNumber(string operand)
         {
             double number;
             var isNumber = double.TryParse(operand,NumberStyles.AllowDecimalPoint,numberFormatInfo, out number);
