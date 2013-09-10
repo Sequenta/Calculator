@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using BusinessLogic;
+using Domain;
 using JetBrains.Annotations;
 
 namespace CalculatorSolution
@@ -11,15 +13,33 @@ namespace CalculatorSolution
         static void Main()
         {
             var pluginReader = new OperationPluginReader();
-            var operations = pluginReader.ReadPluginsFrom(Environment.CurrentDirectory + "\\Plugins");
+            List<IOperation> operations;
+            try
+            {
+                operations = pluginReader.ReadPluginsFrom(Environment.CurrentDirectory + "\\Plugins");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine("Ошибка! Отсутсвует директория Plugins");
+                Console.WriteLine("Нажмите любую клавишу, чтобы выйти...");
+                Console.ReadKey();
+                return;
+            }
             var recognizer = new BaseRecognizer(operations);
             var calculator = new PostfixCalculator(recognizer);
             ShowAvailableOperations(calculator.GetAvailableOperations());
             var reader = new ConsoleInputReader();
             while (true)
             {
-                var result = calculator.Calculate(reader.GetExpression());
-                Console.WriteLine("Результат: {0}",result);
+                try
+                {
+                    var result = calculator.Calculate(reader.GetExpression());
+                    Console.WriteLine("Результат: {0}",result);
+                }
+                catch (UnrecognizedOperationException e)
+                {
+                    Console.WriteLine(e);
+                }
                 Console.WriteLine("Нажмите Enter, чтобы продолжить или Esc, чтобы выйти");
                 if (Console.ReadKey().Key == ConsoleKey.Escape)
                 {
