@@ -69,15 +69,8 @@ namespace BusinessLogic
             for (var i = 0; i < expression.Length; i += nextCharacterPosition)
             {
                 var character = expression[i];
-                var recognizedOperand = "";
-                if (char.IsDigit(character))
-                {
-                    recognizedOperand = GetFullNumber(expression.Substring(i, expression.Length - i));
-                }
-                else
-                {
-                    recognizedOperand = GetFullOperation(expression.Substring(i, expression.Length - i));
-                }
+                var recognizedOperand = char.IsDigit(character) ? GetFullNumber(expression.Substring(i, expression.Length - i)) : 
+                                                                  GetFullOperation(expression.Substring(i, expression.Length - i));
                 operands.Add(recognizedOperand);
                 nextCharacterPosition = recognizedOperand.Length;
             }
