@@ -38,7 +38,7 @@ namespace CalculatorSolution
                 }
                 catch (UnrecognizedOperationException e)
                 {
-                    Console.WriteLine(e);
+                    Console.WriteLine(e.Message);
                 }
                 Console.WriteLine("Нажмите Enter, чтобы продолжить или Esc, чтобы выйти");
                 if (Console.ReadKey().Key == ConsoleKey.Escape)
