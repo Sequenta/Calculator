@@ -7,22 +7,24 @@ namespace CalculatorSolution.Test.Plugins
 {
     public class PluginReaderTests
     {
+        private readonly IPluginReader pluginReader;
+        private readonly string pluginPath;
+        public PluginReaderTests()
+        {
+            pluginReader = new OperationPluginReader();
+            pluginPath = System.Environment.CurrentDirectory + "\\" + "Plugins";
+        }
+
         [Fact]
         public void PluginReader_FindsAllOperationsInDLLFiles()
         {
-            IPluginReader pluginReader = new OperationPluginReader();
-            var pluginPath = System.Environment.CurrentDirectory + "\\" + "Plugins";
-
             var result = pluginReader.ReadPluginsFrom(pluginPath);
-
             Assert.Equal(4,result.Count);
         }
 
         [Fact]
         public void PluginReader_ThrowsDirectoryNotFoundException()
         {
-            IPluginReader pluginReader = new OperationPluginReader();
-            var pluginPath = System.Environment.CurrentDirectory + "\\" + "Pluguns";
             Assert.Throws<DirectoryNotFoundException>(() => pluginReader.ReadPluginsFrom(pluginPath));
         }
     }
