@@ -44,12 +44,12 @@ namespace BusinessLogic
             foreach (var operation in operations)
             {
                 var operatorLength = operation.StringPresentation.Length;
-                var operationSubstring = "";
+                string operationSubstring;
                 try
                 {
                     operationSubstring = expression.Substring(0, operatorLength);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     continue;
                 }
