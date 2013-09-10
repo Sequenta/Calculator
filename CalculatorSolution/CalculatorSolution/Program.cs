@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using BusinessLogic;
+using JetBrains.Annotations;
 
 namespace CalculatorSolution
 {
     class Program
     {
+        [UsedImplicitly]
         static void Main()
         {
             var pluginReader = new OperationPluginReader();
-            var operations = pluginReader.ReadPluginsFrom(System.Environment.CurrentDirectory + "\\Plugins");
+            var operations = pluginReader.ReadPluginsFrom(Environment.CurrentDirectory + "\\Plugins");
             var recognizer = new BaseRecognizer(operations);
             var calculator = new PostfixCalculator(recognizer);
             ShowAvailableOperations(calculator.GetAvailableOperations());
