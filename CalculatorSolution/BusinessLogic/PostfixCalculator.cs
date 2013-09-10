@@ -9,8 +9,8 @@ namespace BusinessLogic
     /// </summary>
     public class PostfixCalculator:ICalculator
     {
-        private NumberFormatInfo numberFormatInfo;
-        private IRecognizer recognizer;
+        private readonly NumberFormatInfo numberFormatInfo;
+        private readonly IRecognizer recognizer;
 
         public PostfixCalculator(IRecognizer recognizer)
         {
@@ -132,7 +132,7 @@ namespace BusinessLogic
             return recognizer.GetOperationPriority(operation);
         }
 
-        public List<string> GetAvailableOperations()
+        public IEnumerable<string> GetAvailableOperations()
         {
             return recognizer.GetAvailableOperations();
         }

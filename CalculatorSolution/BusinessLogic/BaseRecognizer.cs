@@ -11,7 +11,7 @@ namespace BusinessLogic
     /// </summary>
     public class BaseRecognizer:IRecognizer
     {
-        private List<IOperation> operations;
+        private readonly List<IOperation> operations;
 
         public BaseRecognizer() : this(null)
         {
@@ -44,12 +44,12 @@ namespace BusinessLogic
             foreach (var operation in operations)
             {
                 var operatorLength = operation.StringPresentation.Length;
-                var operationSubstring = "";
+                string operationSubstring;
                 try
                 {
                     operationSubstring = expression.Substring(0, operatorLength);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     continue;
                 }
@@ -69,15 +69,8 @@ namespace BusinessLogic
             for (var i = 0; i < expression.Length; i += nextCharacterPosition)
             {
                 var character = expression[i];
-                var recognizedOperand = "";
-                if (char.IsDigit(character))
-                {
-                    recognizedOperand = GetFullNumber(expression.Substring(i, expression.Length - i));
-                }
-                else
-                {
-                    recognizedOperand = GetFullOperation(expression.Substring(i, expression.Length - i));
-                }
+                var recognizedOperand = char.IsDigit(character) ? GetFullNumber(expression.Substring(i, expression.Length - i)) : 
+                                                                  GetFullOperation(expression.Substring(i, expression.Length - i));
                 operands.Add(recognizedOperand);
                 nextCharacterPosition = recognizedOperand.Length;
             }
@@ -99,7 +92,7 @@ namespace BusinessLogic
             return operation.Priority;
         }
 
-        public List<string> GetAvailableOperations()
+        public IEnumerable<string> GetAvailableOperations()
         {
             return operations.Select(operation => operation.StringPresentation).ToList();
         }
