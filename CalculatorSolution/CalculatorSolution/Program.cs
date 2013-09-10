@@ -5,9 +5,9 @@ using JetBrains.Annotations;
 
 namespace CalculatorSolution
 {
+    [UsedImplicitly]
     class Program
     {
-        [UsedImplicitly]
         static void Main()
         {
             var pluginReader = new OperationPluginReader();
