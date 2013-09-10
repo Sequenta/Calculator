@@ -45,6 +45,6 @@ namespace Domain
         /// Возвращает все доступные операци
         /// </summary>
         /// <returns></returns>
-        List<string> GetAvailableOperations();
+        IEnumerable<string> GetAvailableOperations();
     }
 }

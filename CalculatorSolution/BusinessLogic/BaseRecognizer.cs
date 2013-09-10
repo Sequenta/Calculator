@@ -92,7 +92,7 @@ namespace BusinessLogic
             return operation.Priority;
         }
 
-        public List<string> GetAvailableOperations()
+        public IEnumerable<string> GetAvailableOperations()
         {
             return operations.Select(operation => operation.StringPresentation).ToList();
         }
