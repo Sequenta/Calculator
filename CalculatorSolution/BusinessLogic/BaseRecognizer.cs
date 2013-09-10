@@ -11,7 +11,7 @@ namespace BusinessLogic
     /// </summary>
     public class BaseRecognizer:IRecognizer
     {
-        private List<IOperation> operations;
+        private readonly List<IOperation> operations;
 
         public BaseRecognizer() : this(null)
         {
